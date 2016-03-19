@@ -4,7 +4,7 @@
 * Version: 0.1A
 * Dependencias:
 * --Sin dependencias.
-* 
+*
 * Enrutador.
 */
 class Rutas{
@@ -22,13 +22,12 @@ class Rutas{
 			if(strpos($ruta,"$") !== false){
 				$rutawo = preg_split("/[$]+/", $ruta, 0, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE)[0];
 				if(strpos($this->g_route,$rutawo) === 0){
-				$rutaid = split($rutawo,$this->g_route)[1];
+					$rutaid = substr($this->g_route,strlen($rutawo));
 					$this->mostrarVistaGet($vista,$rutaid);
 					$b= true;
 					break;
 				}
 			}
-
 			if($this->g_route == $ruta || $this->g_route == $ruta.'/'){
 				$this->mostrarVista($vista);
 				$b= true;
