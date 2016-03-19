@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `imagenes` (
 
 INSERT INTO `imagenes` (`id`, `url`) VALUES
 (39, 'contenido/imagenes/40e964ed1d3fd0f685a1d19e5f80c7894423cb1c.png'),
-(42, 'contenido/imagenes/350daa4023e2d4e5d11fcd20952bd7729253ec18.png');
+(42, 'contenido/imagenes/350daa4023e2d4e5d11fcd20952bd7729253ec18.png'),
 (43, 'contenido/imagenes/350daa4023e2d4e5d11fcd20952bd7729253ec17.jpg');
 -- --------------------------------------------------------
 
