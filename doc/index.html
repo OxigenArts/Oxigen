@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Documentacion</title>
+    <link rel="stylesheet" href="styles/monokai-sublime.css">
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic' rel='stylesheet' type='text/css'>
+    <script src="highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+    p,h1,h2,span,li{
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    body{
+      margin:10px 50px;
+      background-color: #efefef;
+    }
+    code,pre{
+      font-family: 'Inconsolata' !important;
+      font-size: 15px;
+      border-radius: 4px;
+    }
+    code b{
+      font-weight: bold;
+    }
+    span.note{
+      color:#444;
+      font-style: italic;
+    }
+    img{
+      background-color: #ecf0f5;
+      border-radius: 4px;
+      padding:5px;
+      border:1px solid #acb0b5;
+    }
+    p img{
+      vertical-align: middle;
+      padding:0;
+      border: 0;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>1. Introducción general.</h1>
+    <p>
+      <span class="note"><b>NOTA</b>: Es necesario resaltar que el sistema esta aún en etapa de desarrollo y todo puede mejorarse. si tiene dudas o sugerencias puede contactarse con los desarrolladores en:...;</span>
+    </p>
+    <p>
+      El sistema está desarrollado con PHP orientado a objetos y Mysql como gestor de bases de datos. Está compuesto por una serie de módulos principales que se complementan y permiten la utilización de otros módulos secundarios. En caso de no contar con un módulo en específico, este puede ser reemplazado por otro de funcionalidad similar, solo si es compatible, haciendo el sistema más flexible para los programadores.
+    </p>
+    <p>
+      También cuenta con una serie de herramientas que harán más fácil la producción de aplicaciones web dentro de este, actuando también como framework y teniendo la posibilidad de poder acceder a la base de datos de manera similar a un gestor de contenidos u otro framework similar, pero con la posibilidad de crear extensiones dinámicamente. De esta manera, se garantiza la flexibilidad en el código siempre y cuando se utilice las clases que el sistema aporta o creando nuevas siguiendo el patrón de desarrollo del mismo. La estructura de las clases está basada en un patrón de código que se puede seguir para facilitar la creación de nuevos módulos y así ampliar el campo de posibilidades a la hora de realizar código.
+    </p>
+    <p>
+      El sistema cuenta con dos archivos principales que reciben prácticamente toda la información que entra y sale en el sistema. Uno de los archivos es el “<b>index.php</b>” ubicado en la carpeta raíz de la instalación del sistema, todas las peticiones (salvo algunas excepciones) son redirigidas directamente a este, mediante otro archivo que se encarga de esta redirección (“<b>.htaccess</b>”), que las captura e interpreta de distinta manera según la configuración deseada. En el archivo se incluyen las dos clases principales: <b>Rutas</b> y <b>Database</b>.
+    </p>
+    <p>
+      La clase <b>Rutas</b> recibe y procesa los datos de la URL, y la procesa para devolver al usuario la página, también llamada “vista”, indicada.
+Las vistas mostradas pueden obtener información anteriormente almacenada en una base de datos mediante la clase <b>Database</b>. Esta incluye varios métodos para enviar o recibir información alojada en el servidor, como por ejemplo, Información de los usuarios, o de una sección de noticias.
+    </p>
+    <p>
+      La clase <b>Database</b> contiene una serie de funciones útiles para el funcionamiento del sistema y para el desarrollo íntegro de un nuevo módulo, utilizándose para agilizar el desarrollo a la hora de comunicarse con la base de datos.
+    </p>
+    <p>
+      Ya teniendo estas dos clases de uso general, las demás clases pueden funcionar correctamente e integrarse de manera que puedan funcionar en conjunto.
+    </p>
+    <h1>2. Instalación  del sistema. (manualmente)</h1>
+    <p>
+      Para instalar el sistema deberemos disponer básicamente de un servidor con soporte de PHP y Mysql.
+    </p>
+    <p>
+      Primero debemos subir los archivos del sistema al servidor y modificar el archivo “<b>.htaccess</b>”.
+    </p>
+    <pre><code class="html">RewriteEngine on
+RewriteBase <b>/directorio_instalacion</b>
+RewriteCond %{REQUEST_URI} !<b>/directorio_instalacion</b>/contenido/
+RewriteCond %{REQUEST_FILENAME} !.*jpg$|.*gif$|.*png$|.*css$|.*js$|.*svg$|.*ttf$|.*woff$|.*woff2$|.*eot$
+RewriteRule ^(.*)$ index.php?route=$1 [QSA,NC,L] </code></pre>
+    <p>
+      Donde “<b>/directorio_instalacion</b>” es el directorio base del sistema.
+    </p>
+    <p>
+      Luego será necesario crear una nueva base de datos. La información de conexión de la misma debe ser actualizada en el archivo “<b>database.php</b>” ubicado en la carpeta “<b>config</b>” en el directorio de instalación, o “<b>/config/database.php</b>”.
+    </p>
+    <pre><code class="php">return array(
+    "host"      => "<b>host_mysql</b>",
+    "user"      => "<b>usuario_db</b>",
+    "pass"      => "<b>pass_db</b>",
+    "database"  => "<b>nombre_db</b>",
+);
+</code></pre>
+    <p>
+      Donde “<b>host_mysql</b>” es el nombre del servidor de la base datos. “<b>usuario_db</b>”, el nombre de usuario, “<b>pass_db</b>” la contraseña y “<b>nombre_db</b>” el nombre de la base de datos. Tambien deberá importarse a la base de datos el archivo "<b>mysql_db.sql</b>", ubicado en el directrio base del sistema, que contiene las configuraciones básicas de los módulos incluidos.
+    </p>
+    <p>
+      Una vez importada la base de datos es importante modificar el campo "<b>url</b>" en la tabla "<b>config</b>" con la dirección del sitio usando algun software como PhpMyAdmin.
+    </p>
+    <img src="imgs/img00.png" alt="PhpMyAdmin" />
+    <p>
+      Despues de realizado todo el procedimiento el sistema debería ser accesible desde el navegador web ingresando la dirección del servidor donde fue instalado.
+    </p>
+    <p>
+      <span class="note"><b>NOTA</b>: Tambien debería poder ser posible ingresar al panel de administrador en la dirección de logueo default "<b>/login</b>" con los datos de sesión por defecto incluidos en la base de datos.</br>
+      <b>Usuario: admin</b></br>
+      <b>Contraseña: admin</b></span>
+    </p>
+    <h1>3. Manual de uso básico.</h1>
+    <p>
+      En este simple manual se pretende explicar el funcionamiento basico del sistema, sus módulos y configuraciones generales para cualquier usuario con o sin conocimientos en programación. Dividido en # ←(reemplazar por numero de secciones) secciones para facilitar su comprensión se intentara explicar los conceptos basicos que cualquier usuario debe tener para utilizar correctamente el sistema.
+    </p>
+    <h1>3.1. Conceptos basicos.</h1>
+    <p>Los siguientes conceptos serán utilizados en el manual y se daran por entendios.</p>
+    <p>
+      <ul>
+        <li><b>Usuario Administrador</b>: Usuario que tiene control total o parcial de la configuración general del sistema y sus usuarios.</li>
+        <li><b>Módulo</b>: Añadido o extensión del sistema. Generalmente incluye nuevas funciones para ser utilizadas por los programadores o usuarios.</li>
+        <li><b>Post</b>: Publicación de contenido generalmente realizada por administradores del sitio para ser mostrada a los usuarios.</li>
+        <li><b>Tema</b>: Plantilla que define el estilo en que se muestra la página principal que ven los usuarios. Esto incluye colores, textos, entre otras cosas.</li>
+        <li>Panel de Aministración o "<b>Dashboard</b>": es el sitio en donde los administradores pueden modificar la configuración general del sitio, gestionar sus usarios, publicaciones y temas, entre otras cosas.</li>
+      </ul>
+    </p>
+    <h1>3.2. El Dashboard</h1>
+    <p>
+      El dashboard es la página donde los usuarios administradores tienen acceso y control sobre la información del sistema y sus usuarios. Pueden agregar, modificar o eliminar datos en el sitio.</br>
+      Tambien pueden personalizar la página principal instalando nuevos temas o complementos.
+    </p>
+    <img src="imgs/img02.png" alt="Captura de pantalla de la vista principal del dashboard" />
+    <p>
+      <span class="note">Una de las vistas del dashboard</span>
+    </p>
+    <h2>a. Ingresando al Dashboard</h2>
+    <p>
+      Para ingresar al panel de administración deberemos contar con una cuenta de administrador. Por defecto el usuario y la contraseña son "<b>admin</b>". Luego en nuestro navegador ingresamos a la dirección "<b>/login</b>" precedido de la de nuestro sitio. Por ejemplo: "<b>www.misitio.com/login</b>".
+    </p>
+      <img src="imgs/img01.png" alt="Vista del Login" />    
+    <h2>b. Componentes del Dashboard</h2>
+    <p>
+      El dashboard esta dividido en tres partes principales. La vista central (1), la barra superior (2) y el menú principal (3).
+    </p>
+      <img src="imgs/img03.png" alt="Captura de pantalla de la vista principal del dashboard con descripcion" />
+    <p>
+      <b>1. </b>En la <b>vista central</b> se muestra toda la información sobre los usuarios, publicaciones, temas y demas configuraciones del sitio. En esta vista se puede <b>consultar y modificar</b> toda la información que visualizan los usuarios, si se tienen los permisos adecuados (como una cuenta de administrador).
+
+    </p>
+    <p>
+      <b>2. </b>En la <b>barra superior</b> se puede apreciar el <b>nombre del usuario</b> que ingreso al dashboard y el <b>logotipo del sitio</b> que puede ser modificado en cualquier momento desde la <a href="#">página de configuraciones</a>.
+    </p>
+      <img src="imgs/img04.png" alt="Barra superior" />
+    <p>
+      <b>3. </b>El <b>menú principal</b> contiene una lista de opciones para ver o modificar información referida a los usuarios y al sitio web en general y tambien una pequeña lista de "<b>atajos</b>" para cerrar sesión o dirigirse a la página principal del sistema de forma mas rapida.
+    </p>
+      <img src="imgs/img05.png" alt="Menu principal" />
+    <h1>3.3. Las Publicaciones.</h1>
+    <p>
+      Una de las maneras de mantener actualizado un sitio es hacer publicaciones regularmente, Generalmente estas publicaciones se muestran en la página principal para ser leidas por los usuarios.
+    </p>
+    <p>
+      Estas publicaciones pueden ser realizadas por cualquier usuario <b>Adminsitrador</b> desde el dashboard.
+    </p>
+    <h2>a. Creando posts(publicaciones)</h2>
+    <p>
+      Una vez hayamos ingresado al dashboard, debemos dirigirnos al <b>menu principal</b>. En el submenú de <b>Posts</b>, se encuentran opciones para crear y modificar, de manera sencilla, publicaciones en general en el sitio.</br>
+      Bastará con ingresar a la sección "<b>Agregar post</b>", para ingresar a la página correspondiente.
+    </p>
+      <img src="imgs/img06.png" alt="Menu posts" />
+    <p>
+      Al ingresar, verá algo similar a esto:
+    </p>
+      <img src="imgs/img07.png" alt="Página de agregar post" />
+    <p>
+      Existen diferentes entradas de texto e imagen que servirán para capturar la información y guardarla en una nueva publicación, para ser mostrada a los usuarios.
+    </p>
+    <p>
+      <ul>
+        <li>El "<b>Titulo</b>" (1) será mostrado en la cabecera de la publicación.</li>
+        <li>El campo "<b>Contenido</b>" (2) corresponde a el cuerpo de dicha publicación.</li>
+        <li>El boton señalado con el numero "<b>3</b>", sirve para seleccionar una imagen destacada en la publicación. Esta imagen es siempre necesaria.</li>
+        <li>El campo "<b>Tags</b>" (4) debe contener palabras clave que describan de manera muy simple el contenido del post.</li>
+        <li>Y finalmente, el botón "<b>Guardar</b>" (5) sirve para finalizar la publicación y ser mostrada a los usuarios.</li>
+      </ul>
+    </p>
+    <h2>b. Modificar y elminiar posts</h2>
+    <p>
+      Para modificar o eliminar una publicación creada anteriormente, se debe ingresar al listado de publicaciones en el submenú "<b>Listado</b>" del menú "<b>Post</b>".
+    </p>
+    <img src="imgs/img08.png" alt="Menú de posts" />
+    <p>
+      Una vez en la página "<b>Listado de posts</b>"...
+    </p>
+    <img src="imgs/img09.png" alt="Listado de posts" />
+    <p>
+      ... se muestra una tabla con los datos de las publicaciones en el sitio.
+    </p>
+    <p>
+      Para eliminar una publicación debe presionar el boton <img src="imgs/img11.png" alt="Editar"/> correspondiente a la publicación que quiera eliminar.
+    </p>
+    <p>
+      <span class="note">NOTA: Tenga en cuenta que una vez eliminado NO podra recuperar la información de esa publicación</span>
+    </p>
+    <p>
+      Para modificar una de las publicaciones hay que presionar el boton <img src="imgs/img10.png" alt="Eliminar"/> correspondiente a la publicación que quiera modificar y sera dirigido a la página de edición de posts.
+    </p>
+    <img src="imgs/img12.png" alt="Edición de posts"/>
+    <p>
+      El proceso para editar la publicación es practicamente el mismo que para <a href="#">agregar un nuevo post</a>. Simplemente se deben <b>completar los campos</b> con los datos deseados y presionar el <b>botón guardar</b>.
+    </p>
+    <p>
+      <span class="note">NOTA: Una vez modificada la publicación NO sera posible revertir los cambios realizados.</span>
+    </p>
+    <h1>3.4. Cuentas de Usuarios.</h1>
+    <p>
+      Todos los usuarios registrados en el sitio poseen un nombre de usuario, una contraseña y otros datos que determinan sus privilegios sobre el sistema y otros usuarios.
+    </p>
+    <p>
+      Los usuarios "<b>Administrador</b>" cuentan con control total sobre la configuración y pueden acceder al dashboard para modificar toda la información del sitio.
+    </p>
+    <p>
+      El resto de los usuarios, los <b>usuarios normales</b>, no pueden acceder al dashboard, pero pueden acceder a privilegios especiales para usuarios registrados en el el sitio, que serían inaccesibles sin una cuenta de usuario.
+    </p>
+    <p>
+      Desde el <b>dashboard</b> los administradores pueden gestionar todas las cuentas de usuarios en el sitio. Pueden, desde modificar la información de los usuarios, hasta eliminar o crear nuevas cuentas de administrador.
+    </p>
+    <h2>a. Crear nuevo usuario</h2>
+    <p>
+      Para crear una nueva cuenta de usuario podemos acceder directamente a la página de registro del sistema ("<b>/reg</b>") si mantenemos el registro abierto para cualquier usuario.
+    </p>
+    <img src="imgs/img13.png" alt="Página de registro"/>
+    <p>
+      En caso de no permitir el registro a todos los usuarios o tener la necesidad de crear un nueva cuenta de administrador, deberemos ingresar al dashboard, seleccionar el menu "<b>Usuarios</b>"...
+    </p>
+    <img src="imgs/img14.png" alt="Menú Usuarios"/>
+    <p>
+     ...e inmediatamente seremos redirigidos a la página de gestión de usuarios.
+    </p>
+    <img src="imgs/img15.png" alt="Página Usuarios"/>
+    <p>
+      En la página de gestión de usuarios, se puede observar una lista de usuarios. Si aún no modificamos ningun usuario, sólo existirá en la lista el usuario por defecto con privilegios de administrador.
+    </p>
+    <p>
+      <span class="note">NOTA: Es importante destacar que solo se pueden crear usuarios con privilegio igual o inferior a la del usuario actual.</span>
+    </p>
+    <p>
+      Para crear un nuevo usuario, simplemente haz click en el botón “<b>Nuevo usuario</b>” <img src="imgs/img16.png" alt="Boton Nuevo usuario"/> para ir a la página de creación de usuarios.
+    </p>
+    <img src="imgs/img17.png" alt="Página de creación de usuarios"/>
+    <p>
+      Ahora solo se debe completar el formulario con los datos correspondientes y presionar el botón <b>guardar</b>. De esta manera, el usuario ya debería estar registrado en el sistema, pudiendo acceder a contenidos exclusivos para los usuarios registrados.
+    </p>
+    <h2>b. Modificar o eliminar usuarios</h2>
+    <p>
+      Para eliminar un usuario, una vez en la página de gestión de usuarios, debe presionar el botón <img src="imgs/img11.png" alt="Editar"/> correspondiente a la cuenta de usuario que quiera eliminar.
+    </p>
+    <p>
+      <span class="note">NOTA: Tenga en cuenta que una vez eliminado NO podrá recuperar la información de ese usuario.</span>
+    </p>
+    <p>
+      Para modificar los datos o privilegios de un usuario hay que presionar el botón <img src="imgs/img10.png" alt="Eliminar"/> correspondiente al usuario que quiera modificar y será dirigido a la página de edición de usuarios.
+    </p>
+    <p>
+      El proceso para editar el usuario es prácticamente el mismo que para agregar un nuevo usuario. Simplemente se deben completar los campos con los datos deseados y presionar el botón guardar.
+    </p>
+    <p>
+      <span class="note">NOTA: Una vez modificada el usuario NO será posible revertir los cambios realizados.</span>
+    </p>
+    <h1>3.5. Las Páginas.</h1>
+    <p>
+      Las <b>páginas</b> son secciones especiales que se muestran en la página principal del sistema. algunas de estas secciones pueden contener datos de contacto, informacion, galerias de fotos o cualquier otra cosa que quiera agregar en ellas.
+    </p>
+    <p>
+      Estas páginas funcionan de manera muy similar a <a href="">los posts</a>, y la forma de crear, modificar o eliminarlas es muy similar a la de las publicaciones.
+    </p>
+    <img src="imgs/img18.png" alt="Ejemplo de una página"/>
+    <p>
+      <span class="note">Ejemplo de una página en el tema "Oxigen" donde "<b>Página de muestra</b>" es un enlace a una página.</span>
+    </p>
+    <h2>a. Crear una página</h2>
+    <p>
+      Para crear una nueva página ingresamos al menu "<b>Agregar Página</b>".
+    </p>
+    <img src="imgs/img19.png" alt="Menú agregar página"/>
+    <p>
+      Una vez en la sección de creación de páginas rellenamos los campos con los datos deseados y guardamos.
+    </p>
+    <img src="imgs/img20.png" alt="Sección de creación de páginas"/> 
+    <h2>a. Modificar y eliminar páginas</h2>
+    <p>
+      Para ver la lista de páginas publicadas en el sistema nos dirigimos al submenú "<b>listado</b>" en el menú "<b>Páginas</b>"
+    </p>
+    <img src="imgs/img21.png" alt="menu listado de páginas"/> 
+    <p>
+      Una vez que haya ingresado a la sección verá una pagina similar a la siguiente.
+    </p>
+    <img src="imgs/img22.png" alt="Sección de páginas"/> 
+    <p>
+      El funcionamiento es muy simple y muy similar al resto de las opciones del dashboard. Para Eliminar una pagina simplemente debemos presionar el boton "<b>Eliminar</b>".<img src="imgs/img23.png" alt="Eliminar"/>
+    </p>
+    <p>
+      Para modificar una publicación pulsamos el boton "<b>Editar</b>".<img src="imgs/img24.png" alt="Editar"/>
+    </p>
+    <p>
+      En la pagina de edición completamos se deben <b>completar los campos</b> y puslar en el boton "<b>Guardar</b>".
+    </p>
+    <img src="imgs/img25.png" alt="Edición de páginas"/> 
+  </body>
+    <script src="jquery.js"></script>
+  <script>
+  $(document).ready(function() {
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+  </script>
+</html>

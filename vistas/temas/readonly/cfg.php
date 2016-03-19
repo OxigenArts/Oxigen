@@ -1,0 +1,1 @@
+Esta es la pagina de Configuracion del tema ReadOnly
