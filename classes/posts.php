@@ -6,7 +6,7 @@
 * --Database.
 * --Imagen.
 * --Usuario.
-* 
+*
 * Manejador de Posts.
 */
 class Post extends Database {
@@ -40,7 +40,7 @@ class Post extends Database {
 			$this->tags = $this->datos[5];
 			$this->img = $this->datos[6];
 			return true;
-		}	
+		}
 		else{
 			return false;
 		}
@@ -105,7 +105,7 @@ class Post extends Database {
 			return false;
 		}
 	}
-	public function setTags($tags){	
+	public function setTags($tags){
 		$this->tags = $tags;
 	}
 	public function getImagen(){
@@ -124,18 +124,18 @@ class Post extends Database {
 	public function Save(){
 		return parent::Insert($this->table,array("titulo" => $this->titulo,"contenido" => $this->contenido,"autor" => $this->autor,"fecha" => $this->fecha, "tags" => $this->tags,"img" => $this->img));
 	}
-	public function Update(){
+	public function Actualizar(){
 		if($this->id != null){
 			return parent::Update($this->table,array("titulo" =>$this->titulo,"contenido" =>$this->contenido,"autor" =>$this->autor,"fecha" =>$this->fecha,"tags" =>$this->tags,"img" =>$this->img),"id",$this->id);
-		}	
+		}
 		else{
 			return false;
 		}
 	}
-	public function Delete(){
+	public function Eliminar(){
 		if($this->id != null){
 			return parent::Delete($this->table,"id",$this->id);
-		} 
+		}
 		else {
 			return flase;
 		}

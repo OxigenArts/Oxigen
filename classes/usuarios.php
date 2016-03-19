@@ -79,7 +79,7 @@ class Usuario extends Database {
 	}
 	public function setEmail($email){
 		$this->email = $email;
-	}	
+	}
 	public function getImagen(){
 		if($this->img != null){
 			return $this->img;
@@ -90,7 +90,7 @@ class Usuario extends Database {
 	}
 	public function setNombre($nombre){
 		$this->nombre = $nombre;
-	}	
+	}
 	public function getNombre(){
 		if($this->nombre != null){
 			return ($this->nombre);
@@ -101,7 +101,7 @@ class Usuario extends Database {
 	}
 	public function setApellido($apellido){
 		$this->apellido = $apellido;
-	}	
+	}
 	public function getApellido(){
 		if($this->apellido != null){
 			return ($this->apellido);
@@ -112,7 +112,7 @@ class Usuario extends Database {
 	}
 	public function setPrivilegio($privilegio){
 		$this->privilegio = $privilegio;
-	}	
+	}
 	public function getPrivilegio(){
 		if($this->privilegio != null){
 			return $this->privilegio;
@@ -129,18 +129,18 @@ class Usuario extends Database {
 	public function Save(){
 		return parent::Insert($this->table,array("usuario" => $this->user,"pass" => $this->pass,"email" => $this->email,"img" => $this->img,"nombre" => $this->nombre,"apellido" => $this->apellido,"privilegio" => $this->privilegio));
 	}
-	public function Update(){
+	public function Actualizar(){
 		if($this->id != null){
 			return parent::Update($this->table,array("usuario" =>$this->user,"pass" =>$this->pass,"email" =>$this->email,"img" =>$this->img,"nombre" =>$this->nombre,"apellido" =>$this->apellido,"privilegio" =>$this->privilegio),"id",$this->id);
-		}	
+		}
 		else{
 			return false;
 		}
 	}
-	public function Delete(){
+	public function Eliminar(){
 		if($this->id != null){
 			return parent::Delete($this->table,"id",$this->id);
-		} 
+		}
 		else {
 			return flase;
 		}

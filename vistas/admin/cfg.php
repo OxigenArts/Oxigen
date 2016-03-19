@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
 		}
 		else{
 			$imagen->setId($cfg->getCfg("logo"));//setea el id de la img con el logo anterior
-			$imagen->Delete();//para borrarlo
+			$imagen->Eliminar();//para borrarlo
 			$newimg = $idimagen[0];//y mete la img en la variable
 		}
 		$rq_titulo = $_REQUEST['titulo'];

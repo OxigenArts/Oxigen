@@ -7,7 +7,7 @@ if(isset($_POST['eliminar'])){
 	$imagen = new Imagen();
 	$post = new Pagina();
 	$post->setId($_POST['id']);
-	if($post->Delete()){
+	if($post->Eliminar()){
 		$mensaje = '<span class="success">Pagina eliminada con exito!</span>';
 	}
 	else{
@@ -36,7 +36,7 @@ else if(isset($_POST['editar'])){
 	</section>';
 }
 else if(isset($_POST['editsave'])){
-	
+
 	if(empty($_POST['titulo']) || empty($_POST['contenido']) ){
 		$mensaje = '<span class="error">Ocurrio un error, verifique los campos.</span>';
 	}
@@ -45,12 +45,12 @@ else if(isset($_POST['editsave'])){
 		$posted->setId($_POST['id']);
 		$posted->setTitulo($_REQUEST['titulo']);
 		$posted->setContenido($_REQUEST['contenido']);
-		if($posted->Update()){
+		if($posted->Actualizar()){
 			$mensaje = '<span class="success">Pagina guardada correctamente!</span>';
-		}	
+		}
 		else{
 			$mensaje = '<span class="error">Ocurrio un error, intenta nuevamente. si el problema persiste contacte a un administrador.</span>';
-		}	
+		}
 	}
 	mostrarPosts($mensaje);
 }
@@ -96,7 +96,7 @@ function mostrarPosts($mensaje){
 	$i++;
 }
 	}
-	
+
 echo '</section>';
 
 }

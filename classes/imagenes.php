@@ -48,7 +48,7 @@ class Imagen extends Database {
 	public function Subir($file){
 		if ($file["error"] > 0){
 			return false;
-		} 
+		}
 		else {
 			$permitidos = array("image/jpg", "image/jpeg", "image/gif", "image/png");
 			$limite_kb = 10;//MB//tamaño
@@ -75,13 +75,13 @@ class Imagen extends Database {
 				} else {
 				return false;
 				}
-			} 
+			}
 			else {
 			return false;
 			}
 		}
 	}
-	public function Delete(){
+	public function Eliminar(){
 		if($this->id != null){
 			if(parent::Delete($this->table,"id",$this->id)) {
 				unlink($this->ruta);
@@ -89,7 +89,7 @@ class Imagen extends Database {
 			} else {
 				return false;
 			}
-		} 
+		}
 		else {
 			return flase;
 		}

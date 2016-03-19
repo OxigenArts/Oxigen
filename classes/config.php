@@ -38,7 +38,7 @@ class Config extends Database {
 	public function newCfg($cfgs){
 		return parent::Insert($this->table,$cfgs);
 	}
-	public function Update(){
+	public function Actualizar(){//a los nuevos metodos
 		if($this->id != null){
 			return parent::Update($this->table,array("titulo" =>$this->titulo,"nombre" =>$this->nombre,"img" =>$this->logo,"descripcion" =>$this->descripcion,"tema" =>$this->tema,"url" =>$this->url),"id",$this->id);
 		}

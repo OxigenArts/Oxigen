@@ -119,7 +119,7 @@ class Tema extends Database {
 	public function Save(){
 		return parent::Insert($this->table,array("titulo" => $this->titulo,"descripcion" => $this->descripcion,"autor" => $this->autor,"fecha" => $this->fecha,"carpeta" => $this->carpeta));
 	}
-	public function Update(){
+	public function Actualizar(){
 		if($this->id != null){
 			return parent::Update($this->table,array("titulo" =>$this->titulo,"descripcion" =>$this->descripcion,"autor" =>$this->autor,"fecha" =>$this->fecha,"carpeta" =>$this->carpeta),"id",$this->id);
 		}
@@ -127,7 +127,7 @@ class Tema extends Database {
 			return false;
 		}
 	}
-	public function Delete(){
+	public function Eliminar(){
 		if($this->id != null){
 			if(parent::Delete($this->table,"id",$this->id) && parent::Delete($this->tablecfg,"tema_id",$this->id)){
 				if(!empty($this->carpeta)){

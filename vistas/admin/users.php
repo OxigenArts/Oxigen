@@ -15,8 +15,8 @@ if(isset($_POST['eliminar'])){
 		$mensaje = '<span class="error">No puedes eliminar a otro Administrador.</span>';
 	}
 	else{
-		if($user->Delete()){
-			if($imagen->Delete()){
+		if($user->Eliminar()){
+			if($imagen->Eliminar()){
 				$mensaje = '<span class="success">Usuario eliminado con exito!</span>';
 			}
 			else{
@@ -70,7 +70,7 @@ else if(isset($_POST['editar'])){
 	</section>';
 }
 else if(isset($_POST['editsave'])){
-	
+
 	if(!empty($_POST['user']) || !empty($_POST['nombre']) || !empty($_POST['apellido']) || !empty($_POST['email']) || !empty($_POST['privilegio']) ){
 		$imagen = new Imagen();
 		$user = new Usuario();
@@ -78,7 +78,7 @@ else if(isset($_POST['editsave'])){
 		$idimagen = $imagen->Subir($_FILES['imagen']);
 		if($idimagen != false){//ahhhhh ajaj si la imagen no se sube se borra, osea si no elegis una se borra
 			$imagen->setId($user->getImagen());
-			$imagen->Delete();
+			$imagen->Eliminar();
 		}
 		$user->setUser($_REQUEST['user']);
 		$user->setNombre($_REQUEST['nombre']);
@@ -89,12 +89,12 @@ else if(isset($_POST['editsave'])){
 		}
 		$user->setPrivilegio($_REQUEST['privilegio']);
 		$user->setImagen($idimagen[0]);
-		if($user->Update()){
+		if($user->Actualizar()){
 			$mensaje = '<span class="success">Usuario guardado correctamente!</span>';
-		}	
+		}
 		else{
 			$mensaje = '<span class="error">Ocurrio un error, intenta nuevamente. si el problema persiste contacte a un administrador.</span>';
-		}	
+		}
 	}
 	else{
 		$mensaje = '<span class="error">Ocurrio un error, verifique los campos.</span>';
@@ -150,10 +150,10 @@ else if(isset($_POST['guardarnuevo'])){
 			$user->setPrivilegio($_REQUEST['privilegio']);
 			if($user->Save()){
 				$mensaje = '<span class="success">Usuario guardado correctamente!</span>';
-			}	
+			}
 			else{
 				$mensaje = '<span class="error">Ocurrio un error, intenta nuevamente. si el problema persiste contacte a un administrador.</span>';
-			}	
+			}
 		}
 		else{
 			$mensaje = '<span class="error">Ocurrio un error, verifique que la imagen sea válida.</span>';

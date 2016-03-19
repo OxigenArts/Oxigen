@@ -8,8 +8,8 @@ if(isset($_POST['eliminar'])){
 	$post = new Post();
 	$post->setId($_POST['id']);
 	$imagen->setId($post->getImagen());
-	if($post->Delete()){
-		if($imagen->Delete()){
+	if($post->Eliminar()){
+		if($imagen->Eliminar()){
 			$mensaje = '<span class="success">Post eliminado con exito!</span>';
 		}
 		else{
@@ -62,13 +62,13 @@ else if(isset($_POST['editsave'])){
 		$idimagen = $imagen->Subir($_FILES['imagen']);
 		if($idimagen != false){
 			$imagen->setId($post->getImagen());
-			$imagen->Delete();
+			$imagen->Eliminar();
 		}
 		$post->setTitulo($_REQUEST['titulo']);
 		$post->setContenido($_REQUEST['contenido']);
 		$post->setTags($_REQUEST['tags']);
 		$post->setImagen($idimagen[0]);
-		if($post->Update()){
+		if($post->Actualizar()){
 			$mensaje = '<span class="success">Post guardado correctamente!</span>';
 		}
 		else{

@@ -78,18 +78,18 @@ class SeccionAdmin extends Database {
 	public function Save(){
 		return parent::Insert($this->table,array("titulo" => $this->titulo, "archivo" => $this->archivo));
 	}
-	public function Update(){
+	public function Actualizar(){
 		if($this->id != null){
 			return parent::Update($this->table,array("titulo" =>$this->titulo,"archivo" =>$this->archivo),"id",$this->id);
-		}	
+		}
 		else{
 			return false;
 		}
 	}
-	public function Delete(){
+	public function Eliminar(){
 		if($this->id != null){
 			return parent::Delete($this->table,"id",$this->id);
-		} 
+		}
 		else {
 			return flase;
 		}

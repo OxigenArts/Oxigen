@@ -10,7 +10,7 @@ $mensaje = "";
 if(isset($_POST['eliminar'])){
 	if($_POST['id'] != $conf->getCfg("tema")){
 		$tema->setId($_POST['id']);
-		if($tema->Delete()){
+		if($tema->Eliminar()){
 			$mensaje = '<span class="success">Tema eliminado con exito!</span>';
 		}
 		else{
