@@ -2,6 +2,6 @@ RewriteEngine on
 RewriteBase /poo
 
 
-RewriteCond %{REQUEST_URI} !/poo/contenido/
+RewriteCond %{REQUEST_URI} !/poo/media/
 RewriteCond %{REQUEST_FILENAME} !.*jpg$|.*gif$|.*png$|.*css$|.*js$|.*svg$|.*ttf$|.*woff$|.*woff2$|.*eot$
-RewriteRule ^(.*)$ index.php?route=$1 [QSA,NC,L] 
+RewriteRule ^(.*)$ index.php?route=$1 [QSA,NC,L]
