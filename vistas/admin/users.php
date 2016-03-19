@@ -1,10 +1,10 @@
 <?php
-require_once 'classes/imagenes.php';
+require_once 'classes/media.php';
 require_once 'classes/usuarios.php';
 require_once 'classes/posts.php';
 $mensaje = "";
 if(isset($_POST['eliminar'])){
-	$imagen = new Imagen();
+	$imagen = new Media();
 	$user = new Usuario();
 	$user->setId($_POST['id']);
 	$imagen->setId($user->getImagen());
@@ -31,7 +31,7 @@ if(isset($_POST['eliminar'])){
 }
 else if(isset($_POST['editar'])){
 	$user = new Usuario();
-	$imagen = new Imagen();
+	$imagen = new Media();
 	$user->setId($_POST['id']);
 	$imagen->setId($user->getImagen());
 	echo'<h1>Editar usuario</h1>
@@ -72,7 +72,7 @@ else if(isset($_POST['editar'])){
 else if(isset($_POST['editsave'])){
 
 	if(!empty($_POST['user']) || !empty($_POST['nombre']) || !empty($_POST['apellido']) || !empty($_POST['email']) || !empty($_POST['privilegio']) ){
-		$imagen = new Imagen();
+		$imagen = new Media();
 		$user = new Usuario();
 		$user->setId($_POST['id']);
 		$idimagen = $imagen->Subir($_FILES['imagen']);
@@ -106,7 +106,7 @@ else if(isset($_POST['editsave'])){
 }
 else if(isset($_POST['nuevo'])){
 	$user = new Usuario();
-	$imagen = new Imagen();
+	$imagen = new Media();
 	echo'<h1>Nuevo usuario</h1>
 	<p>Rellene el formulario para crear un nuevo usuario.</p>
 	<p>Los campos marcados con <span class="red">*</span> son obligatorios</p>
@@ -137,7 +137,7 @@ else if(isset($_POST['nuevo'])){
 }
 else if(isset($_POST['guardarnuevo'])){
 	if(!empty($_POST['user']) || !empty($_POST['nombre']) || !empty($_POST['apellido']) || !empty($_POST['email']) || !empty($_POST['privilegio']) || !empty($_POST['pass']) ){
-		$imagen = new Imagen();
+		$imagen = new Media();
 		$user = new Usuario();
 		$idimagen = $imagen->Subir($_FILES['imagen']);
 		if($idimagen != false){
@@ -187,7 +187,7 @@ function mostrarUsers($mensaje){
     <th>Email</th>
     <th>Privilegio</th>
   </tr>';
-	$imagen = new Imagen();
+	$imagen = new Media();
 	$user = new Usuario();
 	$allusers = $user->getAll();
 	$i = 0;

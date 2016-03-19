@@ -68,7 +68,7 @@ class Media extends Database {
 			if (in_array($type, $permitidos)) {
 				$ext = pathinfo($file['name'], PATHINFO_EXTENSION);
 				$newname = sha1($file['name'].rand()).".$ext";
-				if (in_array($file['size'] <= $limite_kb_img * 1024000){
+				if ($file['size'] <= $limite_kb * 1024000){
 					$ext = pathinfo($file['name'], PATHINFO_EXTENSION);
 					$newname = sha1($file['name'].rand()).".$ext";
 					$ruta = "media/$type/$newname";
@@ -85,7 +85,6 @@ class Media extends Database {
 			}
 		}
 	}
-	return false;
 }
 	public function Eliminar(){
 		if($this->id != null){

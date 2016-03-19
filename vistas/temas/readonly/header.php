@@ -1,7 +1,7 @@
 <?php
 require_once 'classes/config.php';
 require_once 'classes/usuarios.php';
-require_once 'classes/imagenes.php';
+require_once 'classes/media.php';
 require_once 'classes/sesiones.php';
 require_once 'classes/temas.php';
 $sesion = new Sesion();
@@ -33,7 +33,7 @@ if(isset($_REQUEST['login'])){
 		<?php
 		if($sesion->Verificar() == true){
 			$user = new Usuario();
-			$imagen = new Imagen();
+			$imagen = new Media();
 			$user->setId($sesion->getId());
 			$imagen->setId($user->getImagen());
 			$tipo = "Usuario";

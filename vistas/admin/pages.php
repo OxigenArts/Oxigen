@@ -1,10 +1,10 @@
 <?php
-require_once 'classes/imagenes.php';
+require_once 'classes/media.php';
 require_once 'classes/usuarios.php';
 require_once 'classes/paginas.php';
 $mensaje = "";
 if(isset($_POST['eliminar'])){
-	$imagen = new Imagen();
+	$imagen = new Media();
 	$post = new Pagina();
 	$post->setId($_POST['id']);
 	if($post->Eliminar()){

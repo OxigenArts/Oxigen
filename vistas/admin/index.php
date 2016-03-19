@@ -2,7 +2,7 @@
 <html>
 <head>
 	<?php
-	require_once 'classes/imagenes.php';
+	require_once 'classes/media.php';
 	require_once 'classes/config.php';
 	require_once 'classes/sesiones.php';
 	require_once 'classes/usuarios.php';
@@ -25,8 +25,8 @@
 	else{
 		header("location: ".$conf->getCfg("url")."login");
 	}
-	$logoimg = new Imagen();
-	$userimg = new Imagen();
+	$logoimg = new Media();
+	$userimg = new Media();
 	$seccion = new SeccionAdmin();
 	$seccion->setId($secid);
 	$allsecs = $seccion->getAll();

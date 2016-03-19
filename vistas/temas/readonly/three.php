@@ -2,11 +2,11 @@
 require_once('classes/config.php');
 require_once('classes/temas.php');
 require_once('classes/posts.php');
-require_once('classes/imagenes.php');
+require_once('classes/media.php');
 $conf = new Config();
 $tema = new Tema();
 $post = new Post();
-$img = new Imagen();
+$img = new Media();
 $tema->setId($conf->getCfg("tema"));
 
 ?>

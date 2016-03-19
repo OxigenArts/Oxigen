@@ -4,12 +4,12 @@ if(isset($_POST['submit'])){
 		$mensaje = '<span class="error">Ocurrio un error, verifique los campos.</span>';
 	}
 	else{
-		require_once 'classes/imagenes.php';
+		require_once 'classes/media.php';
 		require_once 'classes/usuarios.php';
 		require_once 'classes/posts.php';
 
 		$userid = $_SESSION['id'];
-		$imagen = new Imagen();
+		$imagen = new Media();
 		$idimagen = $imagen->Subir($_FILES['imagen']);
 		if($idimagen != false){
 			$post = new Post();
@@ -21,16 +21,16 @@ if(isset($_POST['submit'])){
 			$post->setImagen($idimagen[0]);
 			if($post->Save()){
 				$mensaje = '<span class="success">Post agregado correctamente!</span>';
-			}	
+			}
 			else{
 				$mensaje = '<span class="error">Ocurrio un error, intenta nuevamente. si el problema persiste contacte a un administrador.</span>';
-			}	
+			}
 		}
 		else{
 			$mensaje = '<span class="error">Ocurrio un error, verifique que la imagen sea válida.</span>';
-		}	
+		}
 	}
-	
+
 }
 else{
 	$mensaje = "";
@@ -52,7 +52,7 @@ else{
 	<h2> Tags: (separados por comas)</h2>
 	<input name="tags" type="text">
 	<input class="azul" name="submit" type="submit" value="Guardar">
-	
+
 </form>
 	</article>
 </section>

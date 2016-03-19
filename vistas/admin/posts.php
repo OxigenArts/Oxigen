@@ -1,10 +1,10 @@
 <?php
-require_once 'classes/imagenes.php';
+require_once 'classes/media.php';
 require_once 'classes/usuarios.php';
 require_once 'classes/posts.php';
 $mensaje = "";
 if(isset($_POST['eliminar'])){
-	$imagen = new Imagen();
+	$imagen = new Media();
 	$post = new Post();
 	$post->setId($_POST['id']);
 	$imagen->setId($post->getImagen());
@@ -23,7 +23,7 @@ if(isset($_POST['eliminar'])){
 }
 else if(isset($_POST['editar'])){
 	$post = new Post();
-	$imagen = new Imagen();
+	$imagen = new Media();
 	$post->setId($_POST['id']);
 	$imagen->setId($post->getImagen());
 
@@ -56,7 +56,7 @@ else if(isset($_POST['editsave'])){
 		$mensaje = '<span class="error">Ocurrio un error, verifique los campos.</span>';
 	}
 	else{
-		$imagen = new Imagen();
+		$imagen = new Media();
 		$post = new Post();
 		$post->setId($_POST['id']);
 		$idimagen = $imagen->Subir($_FILES['imagen']);
@@ -98,7 +98,7 @@ function mostrarPosts($mensaje){
     <th>Tags</th>
     <th>Fecha</th>
   </tr>';
-	$imagen = new Imagen();
+	$imagen = new Media();
 	$post = new Post();
 	$user = new Usuario();
 	$allposts = $post->getAll();

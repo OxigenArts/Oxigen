@@ -4,7 +4,7 @@ if(isset($_POST['submit'])){
 		$mensaje = '<span class="error">Ocurrio un error, verifique los campos.</span>';
 	}
 	else{
-		require_once 'classes/imagenes.php';
+		require_once 'classes/media.php';
 		require_once 'classes/usuarios.php';
 		require_once 'classes/paginas.php';
 		$post = new Pagina();

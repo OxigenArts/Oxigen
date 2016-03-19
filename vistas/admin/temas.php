@@ -2,7 +2,7 @@
 <?php
 require_once 'classes/config.php';
 require_once 'classes/temas.php';
-require_once 'classes/imagenes.php';
+require_once 'classes/media.php';
 $conf= new Config();
 $tema = new Tema();
 

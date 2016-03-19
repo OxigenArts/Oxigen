@@ -1,8 +1,8 @@
 <?php
-require_once 'classes/imagenes.php';
+require_once 'classes/media.php';
 require_once 'classes/config.php';
 $cfg = new Config();
-$imagen = new Imagen();
+$imagen = new Media();
 if(isset($_POST['submit'])){
 	if(!empty($_REQUEST['titulo']) && !empty($_REQUEST['nombre'])){
 		$idimagen = $imagen->Subir($_FILES['imagen']);
