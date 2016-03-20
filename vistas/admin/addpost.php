@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
 
 		$userid = $_SESSION['id'];
 		$imagen = new Media();
-		$idimagen = $imagen->Subir($_FILES['imagen']);
+		$idimagen = $imagen->Subir($_FILES['imagen'],array('imagen'));
 		if($idimagen != false){
 			$post = new Post();
 			$post->setTitulo($_REQUEST['titulo']);

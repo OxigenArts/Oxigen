@@ -59,7 +59,7 @@ else if(isset($_POST['editsave'])){
 		$imagen = new Media();
 		$post = new Post();
 		$post->setId($_POST['id']);
-		$idimagen = $imagen->Subir($_FILES['imagen']);
+		$idimagen = $imagen->Subir($_FILES['imagen'],array('imagen'));
 		if($idimagen != false){
 			$imagen->setId($post->getImagen());
 			$imagen->Eliminar();

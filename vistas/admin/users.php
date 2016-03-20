@@ -75,7 +75,7 @@ else if(isset($_POST['editsave'])){
 		$imagen = new Media();
 		$user = new Usuario();
 		$user->setId($_POST['id']);
-		$idimagen = $imagen->Subir($_FILES['imagen']);
+		$idimagen = $imagen->Subir($_FILES['imagen'],array('imagen'));
 		if($idimagen != false){//ahhhhh ajaj si la imagen no se sube se borra, osea si no elegis una se borra
 			$imagen->setId($user->getImagen());
 			$imagen->Eliminar();
@@ -139,7 +139,7 @@ else if(isset($_POST['guardarnuevo'])){
 	if(!empty($_POST['user']) || !empty($_POST['nombre']) || !empty($_POST['apellido']) || !empty($_POST['email']) || !empty($_POST['privilegio']) || !empty($_POST['pass']) ){
 		$imagen = new Media();
 		$user = new Usuario();
-		$idimagen = $imagen->Subir($_FILES['imagen']);
+		$idimagen = $imagen->Subir($_FILES['imagen'],array('imagen'));
 		if($idimagen != false){
 			$user->setUser($_REQUEST['user']);
 			$user->setPass($_REQUEST['pass']);

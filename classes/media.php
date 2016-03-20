@@ -57,12 +57,11 @@ class Media extends Database {
 		}
 		return false;
 	}
-	public function Subir($file){
+	public function Subir($file,$permitidos = array('imagen','video','audio')){
 		if ($file["error"] > 0){
 			return false;
 		}
 		else {
-			$permitidos = array('imagen', 'video', 'audio');
 			$limite_kb = 10;//MB//tamaño
 			$type = $this->getType($file);
 			if (in_array($type, $permitidos)) {

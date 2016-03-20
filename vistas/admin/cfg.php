@@ -5,7 +5,7 @@ $cfg = new Config();
 $imagen = new Media();
 if(isset($_POST['submit'])){
 	if(!empty($_REQUEST['titulo']) && !empty($_REQUEST['nombre'])){
-		$idimagen = $imagen->Subir($_FILES['imagen']);
+		$idimagen = $imagen->Subir($_FILES['imagen'],array('imagen'));
 		if($idimagen == false){//si la imagen no es false,osea si se subio
 			$newimg = $cfg->getCfg("logo");
 		}
