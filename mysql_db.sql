@@ -2,29 +2,9 @@
 -- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 08-03-2016 a las 23:03:48
--- Versión del servidor: 5.6.20
--- Versión de PHP: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Base de datos: `oxigen`
---
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `cfgtemas`
---
 
 CREATE TABLE IF NOT EXISTS `cfgtemas` (
 `id` int(10) unsigned NOT NULL,
@@ -74,27 +54,27 @@ INSERT INTO `config` (`id`, `cfg_name`, `cfg_value`) VALUES
 (4, 'logo', '42'),
 (5, 'tema', '0'),
 (6, 'registro', '1'),
-(7, 'url', 'http://localhost/poo/');
+(7, 'url', 'http://localhost/');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `imagenes`
+-- Estructura de tabla para la tabla `media`
 --
 
-CREATE TABLE IF NOT EXISTS `imagenes` (
+CREATE TABLE IF NOT EXISTS `media` (
 `id` int(10) unsigned NOT NULL,
   `url` varchar(512) DEFAULT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=43 ;
 
 --
--- Volcado de datos para la tabla `imagenes`
+-- Volcado de datos para la tabla `media`
 --
 
-INSERT INTO `imagenes` (`id`, `url`) VALUES
-(39, 'contenido/imagenes/40e964ed1d3fd0f685a1d19e5f80c7894423cb1c.png'),
-(42, 'contenido/imagenes/350daa4023e2d4e5d11fcd20952bd7729253ec18.png'),
-(43, 'contenido/imagenes/350daa4023e2d4e5d11fcd20952bd7729253ec17.jpg');
+INSERT INTO `media` (`id`, `url`) VALUES
+(39, 'media/imagen/40e964ed1d3fd0f685a1d19e5f80c7894423cb1c.png'),
+(42, 'media/imagen/350daa4023e2d4e5d11fcd20952bd7729253ec18.png'),
+(43, 'media/imagen/350daa4023e2d4e5d11fcd20952bd7729253ec17.jpg');
 -- --------------------------------------------------------
 
 --
@@ -233,10 +213,10 @@ ALTER TABLE `config`
  ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `imagenes`
+-- Indices de la tabla `media`
 --
-ALTER TABLE `imagenes`
- ADD PRIMARY KEY (`id`);
+ALTER TABLE `media`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `url` (`url`);
 
 --
 -- Indices de la tabla `paginas`
@@ -260,7 +240,7 @@ ALTER TABLE `secadm`
 -- Indices de la tabla `temas`
 --
 ALTER TABLE `temas`
- ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `carpeta` (`carpeta`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -283,9 +263,9 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 ALTER TABLE `config`
 MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT de la tabla `imagenes`
+-- AUTO_INCREMENT de la tabla `media`
 --
-ALTER TABLE `imagenes`
+ALTER TABLE `media`
 MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT de la tabla `paginas`
