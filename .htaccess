@@ -1,7 +1,5 @@
 RewriteEngine on
-RewriteBase /poo
-
-
-RewriteCond %{REQUEST_URI} !/poo/media/
+RewriteBase /directorio_instalacion
+RewriteCond %{REQUEST_URI} !/directorio_instalacion/media/
 RewriteCond %{REQUEST_FILENAME} !.*jpg$|.*gif$|.*png$|.*css$|.*js$|.*svg$|.*ttf$|.*woff$|.*woff2$|.*eot$
 RewriteRule ^(.*)$ index.php?route=$1 [QSA,NC,L]

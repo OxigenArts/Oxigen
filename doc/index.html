@@ -39,6 +39,9 @@
       padding:0;
       border: 0;
     }
+    p a{
+      color:#3498db;
+    }
     </style>
   </head>
   <body>
@@ -74,7 +77,7 @@ Las vistas mostradas pueden obtener información anteriormente almacenada en una
     </p>
     <pre><code class="html">RewriteEngine on
 RewriteBase <b>/directorio_instalacion</b>
-RewriteCond %{REQUEST_URI} !<b>/directorio_instalacion</b>/contenido/
+RewriteCond %{REQUEST_URI} !<b>/directorio_instalacion</b>/media/
 RewriteCond %{REQUEST_FILENAME} !.*jpg$|.*gif$|.*png$|.*css$|.*js$|.*svg$|.*ttf$|.*woff$|.*woff2$|.*eot$
 RewriteRule ^(.*)$ index.php?route=$1 [QSA,NC,L] </code></pre>
     <p>
@@ -101,23 +104,23 @@ RewriteRule ^(.*)$ index.php?route=$1 [QSA,NC,L] </code></pre>
       Despues de realizado todo el procedimiento el sistema debería ser accesible desde el navegador web ingresando la dirección del servidor donde fue instalado.
     </p>
     <p>
-      <span class="note"><b>NOTA</b>: Tambien debería poder ser posible ingresar al panel de administrador en la dirección de logueo default "<b>/login</b>" con los datos de sesión por defecto incluidos en la base de datos.</br>
+      <span class="note"><b>NOTA</b>: Tambien debería ser posible ingresar al panel de administrador en la dirección de logueo default "<b>/login</b>" con los datos de sesión por defecto incluidos en la base de datos.</br>
       <b>Usuario: admin</b></br>
       <b>Contraseña: admin</b></span>
     </p>
     <h1>3. Manual de uso básico.</h1>
     <p>
-      En este simple manual se pretende explicar el funcionamiento basico del sistema, sus módulos y configuraciones generales para cualquier usuario con o sin conocimientos en programación. Dividido en # ←(reemplazar por numero de secciones) secciones para facilitar su comprensión se intentara explicar los conceptos basicos que cualquier usuario debe tener para utilizar correctamente el sistema.
+      En este simple manual se pretende explicar el funcionamiento basico del sistema, sus módulos y configuraciones generales para cualquier usuario con o sin conocimientos en programación. Dividiendolo en secciones para facilitar su comprensión se intentara explicar los conceptos basicos que cualquier usuario debe tener para utilizar correctamente el sistema.
     </p>
     <h1>3.1. Conceptos basicos.</h1>
     <p>Los siguientes conceptos serán utilizados en el manual y se daran por entendios.</p>
     <p>
       <ul>
-        <li><b>Usuario Administrador</b>: Usuario que tiene control total o parcial de la configuración general del sistema y sus usuarios.</li>
-        <li><b>Módulo</b>: Añadido o extensión del sistema. Generalmente incluye nuevas funciones para ser utilizadas por los programadores o usuarios.</li>
+        <li><b>Usuario Administrador</b>: Usuario que tiene control total de la configuración general del sistema y sus usuarios.</li>
+        <li><b>Plugin</b>: Añadido o extensión del sistema. Generalmente incluye nuevas funciones para ser utilizadas por los programadores o usuarios.</li>
         <li><b>Post</b>: Publicación de contenido generalmente realizada por administradores del sitio para ser mostrada a los usuarios.</li>
         <li><b>Tema</b>: Plantilla que define el estilo en que se muestra la página principal que ven los usuarios. Esto incluye colores, textos, entre otras cosas.</li>
-        <li>Panel de Aministración o "<b>Dashboard</b>": es el sitio en donde los administradores pueden modificar la configuración general del sitio, gestionar sus usarios, publicaciones y temas, entre otras cosas.</li>
+        <li><b>Dashboard</b>: es el sitio en donde los administradores pueden modificar la configuración general del sitio, gestionar sus usarios, publicaciones y temas, entre otras cosas.</li>
       </ul>
     </p>
     <h1>3.2. El Dashboard</h1>
@@ -133,7 +136,7 @@ RewriteRule ^(.*)$ index.php?route=$1 [QSA,NC,L] </code></pre>
     <p>
       Para ingresar al panel de administración deberemos contar con una cuenta de administrador. Por defecto el usuario y la contraseña son "<b>admin</b>". Luego en nuestro navegador ingresamos a la dirección "<b>/login</b>" precedido de la de nuestro sitio. Por ejemplo: "<b>www.misitio.com/login</b>".
     </p>
-      <img src="imgs/img01.png" alt="Vista del Login" />    
+      <img src="imgs/img01.png" alt="Vista del Login" />
     <h2>b. Componentes del Dashboard</h2>
     <p>
       El dashboard esta dividido en tres partes principales. La vista central (1), la barra superior (2) y el menú principal (3).
@@ -150,7 +153,7 @@ RewriteRule ^(.*)$ index.php?route=$1 [QSA,NC,L] </code></pre>
     <p>
       <b>3. </b>El <b>menú principal</b> contiene una lista de opciones para ver o modificar información referida a los usuarios y al sitio web en general y tambien una pequeña lista de "<b>atajos</b>" para cerrar sesión o dirigirse a la página principal del sistema de forma mas rapida.
     </p>
-      <img src="imgs/img05.png" alt="Menu principal" />
+      <img src="imgs/img05.png" alt="Menú principal" />
     <h1>3.3. Las Publicaciones.</h1>
     <p>
       Una de las maneras de mantener actualizado un sitio es hacer publicaciones regularmente, Generalmente estas publicaciones se muestran en la página principal para ser leidas por los usuarios.
@@ -160,10 +163,10 @@ RewriteRule ^(.*)$ index.php?route=$1 [QSA,NC,L] </code></pre>
     </p>
     <h2>a. Creando posts(publicaciones)</h2>
     <p>
-      Una vez hayamos ingresado al dashboard, debemos dirigirnos al <b>menu principal</b>. En el submenú de <b>Posts</b>, se encuentran opciones para crear y modificar, de manera sencilla, publicaciones en general en el sitio.</br>
+      Una vez hayamos ingresado al dashboard, debemos dirigirnos al <b>menú principal</b>. En el submenú de <b>Posts</b>, se encuentran opciones para crear y modificar, de manera sencilla, publicaciones en general en el sitio.</br>
       Bastará con ingresar a la sección "<b>Agregar post</b>", para ingresar a la página correspondiente.
     </p>
-      <img src="imgs/img06.png" alt="Menu posts" />
+      <img src="imgs/img06.png" alt="Menú posts" />
     <p>
       Al ingresar, verá algo similar a esto:
     </p>
@@ -227,7 +230,7 @@ RewriteRule ^(.*)$ index.php?route=$1 [QSA,NC,L] </code></pre>
     </p>
     <img src="imgs/img13.png" alt="Página de registro"/>
     <p>
-      En caso de no permitir el registro a todos los usuarios o tener la necesidad de crear un nueva cuenta de administrador, deberemos ingresar al dashboard, seleccionar el menu "<b>Usuarios</b>"...
+      En caso de no permitir el registro a todos los usuarios o tener la necesidad de crear un nueva cuenta de administrador, deberemos ingresar al dashboard, seleccionar el menú "<b>Usuarios</b>"...
     </p>
     <img src="imgs/img14.png" alt="Menú Usuarios"/>
     <p>
@@ -276,22 +279,22 @@ RewriteRule ^(.*)$ index.php?route=$1 [QSA,NC,L] </code></pre>
     </p>
     <h2>a. Crear una página</h2>
     <p>
-      Para crear una nueva página ingresamos al menu "<b>Agregar Página</b>".
+      Para crear una nueva página ingresamos al menú "<b>Agregar Página</b>".
     </p>
     <img src="imgs/img19.png" alt="Menú agregar página"/>
     <p>
       Una vez en la sección de creación de páginas rellenamos los campos con los datos deseados y guardamos.
     </p>
-    <img src="imgs/img20.png" alt="Sección de creación de páginas"/> 
+    <img src="imgs/img20.png" alt="Sección de creación de páginas"/>
     <h2>a. Modificar y eliminar páginas</h2>
     <p>
       Para ver la lista de páginas publicadas en el sistema nos dirigimos al submenú "<b>listado</b>" en el menú "<b>Páginas</b>"
     </p>
-    <img src="imgs/img21.png" alt="menu listado de páginas"/> 
+    <img src="imgs/img21.png" alt="menú listado de páginas"/>
     <p>
       Una vez que haya ingresado a la sección verá una pagina similar a la siguiente.
     </p>
-    <img src="imgs/img22.png" alt="Sección de páginas"/> 
+    <img src="imgs/img22.png" alt="Sección de páginas"/>
     <p>
       El funcionamiento es muy simple y muy similar al resto de las opciones del dashboard. Para Eliminar una pagina simplemente debemos presionar el boton "<b>Eliminar</b>".<img src="imgs/img23.png" alt="Eliminar"/>
     </p>
@@ -301,7 +304,28 @@ RewriteRule ^(.*)$ index.php?route=$1 [QSA,NC,L] </code></pre>
     <p>
       En la pagina de edición completamos se deben <b>completar los campos</b> y puslar en el boton "<b>Guardar</b>".
     </p>
-    <img src="imgs/img25.png" alt="Edición de páginas"/> 
+    <img src="imgs/img25.png" alt="Edición de páginas"/>
+    <h1>3.6. Los Temas.</h1>
+    <p>
+      Podemos personzaliar nuestro sitio web instalado temas para hacer un sitio mas personalizado y atractivo a lo usuarios, tambien se pueden instalar temas con funciones especiales para sitios que las necesiten.
+      Todas las acciones que podemos realizar relacionadas a los temas se hacen desde la pagina de temas, en el menú "<b>Temas</b>" en el <b>dashboard</b>.
+    </p>
+    <img src="imgs/img26.png" alt="Menú Temas"/>
+    <h2>a. Subir un nuevo tema</h2>
+    <p>
+      Podemos descargar e instalar temas para personalizar nuestro sitio web de la <a href="#">galería de temas de Oxigen</a> u otro que sea compatible.
+    </p>
+    <p>
+      Primero debemos acceder a la seccion de "Cambiar tema" en el menú "Temas".
+    </p>
+    <img src="imgs/img27.png" alt="Menu cabmiar tema" />
+    <p>
+      Al haber ingresado a la pagina para cambiar temas debemos seleccionar el archivo "<b>.zip</b>" del tema y presionar el boton "<b>Subir tema</b>".<img src="imgs/img28.png" alt="Boton subir tema" />
+    </p>
+    <img src="imgs/img29.png" alt="Pagina cambiar temas" />
+    <p>
+      El tema sera instalado automaticamente y podra ser activado o eliminado cuando se lo desee presionando los botones "<b>Activar</b>" o "<b>Eliminar</b>".<img src="imgs/img30.png" alt="Botones activar y eliminar" />
+    </p>
   </body>
     <script src="jquery.js"></script>
   <script>

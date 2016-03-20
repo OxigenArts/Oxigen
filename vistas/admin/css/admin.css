@@ -399,6 +399,9 @@ input{
 #lista article img{
 	width:50%;
 }
+#lista article.mid{
+	margin:5px;
+}
 #lista article p{
 	text-align: left;
 }

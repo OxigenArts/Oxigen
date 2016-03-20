@@ -1,9 +1,8 @@
 <?php
 return array(
-    "host"      =>"localhost",
-    "user"      =>"root",
-    "pass"      =>"",
-    "database"  =>"sapesys",
+    "host"      =>"host_mysql",
+    "user"      =>"usuario_db",
+    "pass"      =>"pass_db",
+    "database"  =>"nombre_db",
     );
-
 ?>
