@@ -216,7 +216,7 @@ ALTER TABLE `config`
 -- Indices de la tabla `media`
 --
 ALTER TABLE `media`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `url` (`url`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `paginas`
