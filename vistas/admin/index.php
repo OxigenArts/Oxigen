@@ -8,7 +8,7 @@
 	require_once 'classes/usuarios.php';
 	require_once 'classes/secadm.php';
 	$conf = new Config();
-	if(isset($_GET['id'])){//si existe la variable get 
+	if(isset($_GET['id'])){//si existe la variable get
 		$secid = $_GET['id'];//la almacena aqyui
 	}
 	else{
@@ -17,7 +17,7 @@
 	$sesion = new Sesion();
 	$u = new Usuario();
 	$u->setId($sesion->getId());
-	if($sesion->Verificar() == true){ 
+	if($sesion->Verificar() == true){
 		if($u->getPrivilegio() != "1"){//si no es admin
 			header("location: ".$conf->getCfg("url"));
 		}
@@ -60,7 +60,7 @@
 	body.onload=function(){
 		loader.setAttribute("style", "display:none");
     };
-	</script> 
+	</script>
 <header>
 	<div id="logo">
 	<a href="<?php echo $conf->getCfg("url"); ?>admin">
@@ -88,26 +88,41 @@
 		<a href="<?php echo $conf->getCfg("url"); ?>"><li><i class="fa fa-circle-o text-aqua"></i>Pagina Principal</li></a>
 		<a href="<?php echo $conf->getCfg("url"); ?>logout"><li><i class="fa fa-circle-o text-rojo"></i>Cerrar Sesion</li></a>
 		<li class="principal">Menu Principal</li>
-		<?php 
+		<?php
+		$hijo = false;
 		foreach ($allsecs as $key => $value) {
 			$activo ="";
+
 			if($value['id'] == 	$secid){
 				$activo = "active";
 			}
 			if($value['padre'] == "1"){
 				if(empty($value['archivo'])){
-					echo'<li class="padre '.$activo.' "><i class="fa fa-square-o"></i>'.$value['titulo'].'</li>';
+					if($hijo == true){
+						echo "</ul>";
+						$hijo = false;
+					}
+					echo'<li class="padre '.$activo.' desplegable"><i class="fa fa-chevron-down"></i>'.$value['titulo'].'</li><ul class="submenu">';
+					$hijo = true;
 				}
 				else{
+					if($hijo == true){
+						echo "</ul>";
+						$hijo = false;
+					}
 					echo'<a href="'.$conf->getCfg("url").'admin/'.$value['id'].'"><li class="padre shadow '.$activo.'"><i class="fa fa-circle-o"></i>'.$value['titulo'].'</li></a>';
 				}
 			}
 			else{
-				echo'<a href="'.$conf->getCfg("url").'admin/'.$value['id'].'"><li class="shadow '.$activo.'"><i class="fa fa-chevron-right"></i>'.$value['titulo'].'</li></a>';
+				echo'<a href="'.$conf->getCfg("url").'admin/'.$value['id'].'"><li class="shadow '.$activo.' hijo"><i class="fa fa-chevron-right"></i>'.$value['titulo'].'</li></a>';
 			}
 		}
+		if($hijo == true){
+			echo "</ul>";
+			$hijo = false;
+		}
 		?>
-		
+
 	</ul>
 </section>
 <section id="body">
@@ -116,14 +131,24 @@
 	if($archivoseccion != ""){
 		@include($archivoseccion);
 	}
-	
+
 	?>
 </section>
 </body>
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript">
 	var menu = "#menu";
+	$(".submenu").css("display","none");
 	$(document).ready(function(){
+		$(".desplegable").click(function(){
+			if($(this).next(".submenu").css("display") == "none"){
+				$(this).next(".submenu").css("display","block");
+			}
+			else{
+				$(this).next(".submenu").css("display","none");
+			}
+		});
+
 		$("header #logo i").click(function(){
 		if($(menu).css("visibility") == "hidden"){
 			$(menu).css("opacity","1");
@@ -136,6 +161,7 @@
 		});
 
 	});
+
 	$(window).on('resize', function(){
 		if($("body").width() > 780){
 			$(menu).css("opacity","1");
