@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Documentacion</title>
+    <link rel="stylesheet" href="styles/monokai-sublime.css">
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic' rel='stylesheet' type='text/css'>
+    <script src="highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+    p,h1,h2,span,li{
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    body{
+      margin:10px 50px;
+      background-color: #efefef;
+    }
+    code,pre{
+      font-family: 'Inconsolata' !important;
+      font-size: 15px;
+      border-radius: 4px;
+    }
+    code b{
+      font-weight: bold;
+    }
+    span.note{
+      color:#444;
+      font-style: italic;
+    }
+    img{
+      background-color: #ecf0f5;
+      border-radius: 4px;
+      padding:5px;
+      border:1px solid #acb0b5;
+    }
+    p img{
+      vertical-align: middle;
+      padding:0;
+      border: 0;
+    }
+    p a{
+      color:#3498db;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Introducción técnica</h1>
+    <p>
+      Este documento está hecho con la intención de brindar ayuda a los desarrolladores que deseen crear plugins, temas, extensiones o modificar el sistema base para adaptarlo a sus necesidades. Existen diversas clases que deben ser tratadas en el documento, con la intención de poder explicar su funcionamiento, así como también se mostrarán ejemplos de cómo crear extensiones, temas, etc.
+    </p>
+    <h2>Funcionamiento básico del sistema.</h2>
+    <p>
+      El sistema esta dividido en 6 carpetas principales:
+    </p>
+    <ul>
+      <li><b>/config</b>: En esta carpeta se ubica el archivo de configuración de la base de datos, “database.php”. De igual manera, si se desea, se puede utilizar esta carpeta para colocar nuevos archivos de configuración requeridos por algún nuevo módulo o plugin para llevar un mejor orden.</li>
+      <li><b>/classes</b>: En esta carpeta se colocan las clases nativas del sistema, así como también los plugins/módulos que se le deseen agregar. A pesar de que no es estrictamente necesario introducir los módulos en esta carpeta, se recomienda hacerlo.</li>
+      <li><b>/vistas</b>: En esta carpeta estan los archivos de las vistas con extensión “.php” que serán mostrados según la petición realizada al servidor. Estos archivos son llamados por la clase Rutas(). Estas rutas por lo general se definen en el archivo “index.php” en la carpeta base del sistema, o en el archivo “rutas.php” de un tema.</li>
+      <li><b>/vistas/temas</b>: Aquí se encuentran los archivos de los temas instalados.</li>
+      <li><b>/vistas/admin</b>: Todos los archivos del dashboard se colocan aquí.</li>
+      <li><b>/media</b>: Esta carpeta es utilizada para acceder y almacenar el contenido multimedia del sitio. Los archivos en general son guardados aquí y referenciados en la base de datos por la clase Media().</li>
+    </ul>
+    <h2>1.Archivos y Funciones principales</h2>
+    <p>
+      <b>Indice:</b>
+    </p>
+    <ul>
+      <li><a href="#">.htaccess</a></li>
+      <li><a href="#">index.php</a></li>
+      <li><a href="#">classes</a></li>
+      <ul>
+        <li><a href="#">config.php</a></li>
+        <li><a href="#">enrutador.php</a></li>
+        <li><a href="#">mysql.php</a></li>
+        <li><a href="#">archivos.php</a></li>
+        <li><a href="#">media.php</a></li>
+        <li><a href="#">paginas.php</a></li>
+        <li><a href="#">posts.php</a></li>
+        <li><a href="#">secadm.php</a></li>
+        <li><a href="#">sesiones.php</a></li>
+        <li><a href="#">temas.php</a></li>
+        <li><a href="#">usuarios.php</a></li>
+      </ul>
+      <li><a href="#">Carpeta config</a></li>
+      <ul>
+        <li><a href="#">database.php</a></li>
+      </ul>
+      <li><a href="#">Vistas</a></li>
+      <ul>
+        <li><a href="#">Carpeta admin</a></li>
+        <li><a href="#">Carpeta temas</a></li>
+        <li><a href="#">404.php</a></li>
+        <li><a href="#">logout.php</a></li>
+      </ul>
+    </ul>
+    <h2>.htaccess</h2>
+    <p>
+      El archivo .htaccess es el archivo de configuración de <a href="#">Apache</a> que permite, en este caso, redirigir todas las peticiones al archivo index. El archivo está nativamente configurando para funcionar junto a la clase <a href="#">Rutas()</a> del sistema, ubicado en el archivo <a href="#">routes.php</a>.
+    </p>
+    <pre><code class="html">RewriteEngine on
+RewriteBase <b>/directorio_instalacion</b>
+RewriteCond %{REQUEST_URI} !<b>/directorio_instalacion</b>/media/
+RewriteCond %{REQUEST_FILENAME} !.*jpg$|.*gif$|.*png$|.*css$|.*js$|.*svg$|.*ttf$|.*woff$|.*woff2$|.*eot$
+RewriteRule ^(.*)$ index.php?route=$1 [QSA,NC,L] </code></pre>
+  <p>
+    Este archivo puede ser modificado según la conveniencia del usuario o desarrollador.
+  </p>
+  <h2>index.php</h2>
+  <p>
+    Este archivo recibe y procesa todas las peticiones del servidor. Muestra la vista seleccionada por la ruta 
+  </p>
+
+
+    <p>
+      <span class="note"><b>NOTA</b>: Es necesario resaltar que el sistema esta aún en etapa de desarrollo y todo puede mejorarse. si tiene dudas o sugerencias puede contactarse con los desarrolladores en:...;</span>
+    </p>
+  <pre><code class="php">asdasd</code></pre>
+  </body>
+    <script src="jquery.js"></script>
+  <script>
+  $(document).ready(function() {
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+  </script>
+</html>
