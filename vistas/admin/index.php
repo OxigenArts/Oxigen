@@ -102,7 +102,7 @@
 						echo "</ul>";
 						$hijo = false;
 					}
-					echo'<li class="padre '.$activo.' desplegable"><i class="fa fa-chevron-down"></i>'.$value['titulo'].'</li><ul class="submenu">';
+					echo'<li class="padre '.$activo.' desplegable"><i class="fa fa-chevron-right"></i>'.$value['titulo'].'</li><ul class="submenu">';
 					$hijo = true;
 				}
 				else{
@@ -140,12 +140,18 @@
 	var menu = "#menu";
 	$(".submenu").css("display","none");
 	$(document).ready(function(){
+
 		$(".desplegable").click(function(){
 			if($(this).next(".submenu").css("display") == "none"){
 				$(this).next(".submenu").css("display","block");
+				$(this).children('i').removeClass("fa-chevron-right");
+				$(this).children('i').addClass("fa-chevron-down");
 			}
 			else{
 				$(this).next(".submenu").css("display","none");
+				$(this).children('i').removeClass("fa-chevron-down");
+				$(this).children('i').addClass("fa-chevron-right");
+
 			}
 		});
 

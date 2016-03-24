@@ -224,6 +224,7 @@ header ul li img{
 	padding:8px 20px;
 	margin:0;
 	list-style: none;
+	transition: all 0.2s ease;
 }
 #menu li.padre{
 	padding:10px 5px;
@@ -231,6 +232,9 @@ header ul li img{
 }
 #menu li i{
 	margin:auto 8px;
+	transition: all 0.5s ease;
+}#menu li:hover{
+	box-shadow: inset 3px 0px #3c8dbc;
 }
 #menu li.active{
 	box-shadow: inset 3px 0px #3c8dbc;
@@ -239,9 +243,7 @@ header ul li img{
 	background-color: #1e282c;
 	color: #fff;
 }
-#menu li.shadow:hover{
-	box-shadow: inset 3px 0px #3c8dbc;
-}
+
 #menu a:link,#menu a:visited{
 	color:#cccccc;
 	text-decoration: none;
@@ -252,7 +254,7 @@ header ul li img{
 	background: #161e22;
 	text-transform: uppercase;
 	font-size: 12px;
-
+	box-shadow: inset 3px 0px #161e22;
 }
 #menu .text-aqua {
     color: #00c0ef !important;
