@@ -35,7 +35,7 @@ class Sesion extends Database {
 		require_once 'classes/usuarios.php';
 		$usr = new Usuario();
 		if($reg = parent::Select("id,pass",$usr->getTable(),"usuario",$this->user)){
-			if($reg[1] = $this->pass){
+			if($reg[1] == $this->pass){
 				$this->Iniciar($reg[0]);
 				return true;
 			}
@@ -58,7 +58,7 @@ class Sesion extends Database {
 			$_SESSION['id'] = null;
 		}
 	}
-	public function Verificar(){
+	public function Verificar(){	
 		if(isset($_SESSION['conected']) && $_SESSION['conected'] == true){
 			return true;
 		}
