@@ -155,6 +155,8 @@
 			}
 		});
 
+		$(".active").parent().parent(".submenu").css("display","block");
+
 		$("header #logo i").click(function(){
 		if($(menu).css("visibility") == "hidden"){
 			$(menu).css("opacity","1");
@@ -167,7 +169,7 @@
 		});
 
 	});
-
+	
 	$(window).on('resize', function(){
 		if($("body").width() > 780){
 			$(menu).css("opacity","1");

@@ -16,7 +16,7 @@ if(isset($_REQUEST['submit'])){//si se envia el post
 		if(filter_var($_REQUEST['email'], FILTER_VALIDATE_EMAIL)){//verifica el email
 			if(preg_match('/^([a-zA-Z0-9\-\_\.]+)$/i',$_REQUEST['user'])){// despues el user
 				$user->setUser($_REQUEST['user']);
-				$user->setPass($_REQUEST['pass']);
+				$user->setPass(sha1($_REQUEST['pass']));
 				$user->setNombre($_REQUEST['nombre']);
 				$user->setApellido($_REQUEST['apellido']);
 				$user->setEmail($_REQUEST['email']);

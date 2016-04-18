@@ -133,7 +133,6 @@ class Database {
 	}
 	public function Delete($from, $where = "1", $where2 = "1") {
 		$con = $this->conexion();
-		$delete = $con->real_escape_string($delete);
 		$from = $con->real_escape_string($from);
 		$where = $con->real_escape_string($where);
 		$where2 = $con->real_escape_string($where2);

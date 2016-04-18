@@ -7,7 +7,7 @@ $mensaje = '';
 $sesion = new Sesion();
 
 if(isset($_REQUEST['submit'])){
-	if(!empty($_REQUEST['pass']) || !empty($_REQUEST['user'])){
+	if(!empty($_REQUEST['pass']) && !empty($_REQUEST['user'])){
 		$sesion->Cerrar();
 		$sesion->setUser($_REQUEST['user']);
 		$sesion->setPass($_REQUEST['pass']);
@@ -53,12 +53,13 @@ if(isset($_REQUEST['submit'])){
 						<label class="login-field-icon fui-lock" for="login-pass"></label>
 					</div>
 					<input name="submit" type="submit" class="btn btn-primary btn-large btn-block" value="Ingresar">
-					<a class="login-link" href="#">Olvidaste tu contraseña?</a>
+					<a class="login-link" href="<?php echo $conf->getCfg('url');?>">Olvidaste tu contraseña?</a>
 					<?php
 					if($conf->getCfg("registro") == "1"){
 					echo '<a class="login-link" href="'.$conf->getCfg("url").'reg">¿No tienes una cuenta? Registrate!</a>';
 					}
 					?>
+					<a class="login-link" href="<?php echo $conf->getCfg('url');?>">Ir a la pagina principal</a>
 				</form>
 			</div>
 		</div>
