@@ -1,20 +1,20 @@
 <?php
 /*
-* Modulo: Post
+* Modulo: Noticia
 * Version: 0.1A
 * Dependencias:
 * --Database.
 * --Imagen.
 * --Usuario.
 *
-* Manejador de Posts.
+* Manejador de Noticias.
 */
-class Post extends Database {
+class Noticia extends Database {
 	private $id, $titulo, $contenido, $autor, $fecha,$tags,$img;
 	private $table;
 	private $datos = array();
 	public function __construct() {
-		$this->table = "posts";
+		$this->table = "news";
 		if(parent::Create($this->table,
 		"id INT UNSIGNED AUTO_INCREMENT,titulo VARCHAR(128),contenido TEXT,	autor INT,fecha DATE,tags VARCHAR(256),	img INT,PRIMARY KEY(id)")){
 			return true;
