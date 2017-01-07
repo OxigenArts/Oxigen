@@ -14,6 +14,7 @@ $t = new Tema();
 $t->setId($cfg->getCfg("tema"));
 $tema = $t->getCarpeta();
 $r = new Rutas($route_get);
+/*
 $r->agregarRuta("admin","admin/index");
 $r->agregarRuta("admin/$","admin/index");
 $r->agregarRuta("","temas/".$tema."/index");
@@ -23,6 +24,6 @@ $r->agregarRuta("page","temas/".$tema."/index");
 $r->agregarRuta("page/$","temas/".$tema."/page");
 $r->agregarRuta("login","admin/login");
 $r->agregarRuta("logout","logout");
-$r->agregarRuta("reg","admin/reg");
+$r->agregarRuta("reg","admin/reg");*/
 $r->Start();
 ?>
